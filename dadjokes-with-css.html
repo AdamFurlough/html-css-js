@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dad Jokes</title>
+<style>
+    html * {
+        font-family: 'Times New Roman', Times, serif;
+    }
+</style>
+</head>
+<body style="text-align: center; background-color: rgb(189, 189, 189);">
+
+
+<h1 style="background: gray; border-radius: 10px; font-size: 40px;">Dad Jokes </h1>
+<p style="font-size: 25px;">So great they'll make you groan...</p>
+<img id="lols" width="200" height="200" src="https://cdn3.bigcommerce.com/s-npe4l/products/555/images/1631/M-MZ-SMIL---High__27907.1498757701.380.380.jpg?c=2" style="border-radius: 20px;">
+<button style="background: gray; color: black; font-size: 30px; transform: translateY(-90px); font-weight: 700;" id="setupButton">Tell me a joke</button>
+<!--if these con be merged into one paragraph then the backgrounds would be connected instead of looking bad-->
+<h1 style="color: Black; background: gray; border-top-left-radius: 10px; border-top-right-radius: 10px;" id=chosenJokeSetup></h1>
+<h1 style="color: black; background: gray; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" id=chosenJokePunchline></h1>
+
+
+<script type = "text/javascript">
+
+//jokes list
+const j1 = {setup:"What did the 0 say to the 8?...", punchline:"Nice belt!"}
+const j2 = {setup:"What do you call a pony with a sore throat?...", punchline:"A little horse!"}
+const j3 = {setup:"what do you call somebody with no body and no nose?", punchline:"Nobody knows!"}
+const j4 = {setup:"How does a penguin build a house?", punchline:"Igloos it together!"}
+const j5 = {setup:"What does a house wear?", punchline:"A dress! (address)"}
+const j6 = {setup:"A lorry full of terrapins crashed into a van full of tortoises...", punchline:"It was a turtle disaster!"}
+const j7 = {setup:"How do you make antifreeze?", punchline:"Steal her blanket!"}
+const j8 = {setup:"My wife is on a tropical food diet so the house is full of fruit...", punchline:"It's enough to make a mango crazy!"}
+const j9 = {setup:"What did the buffalo say to his son when he left for school?", punchline:"Bison!"}
+const j10 = {setup:"Did you hear about the guy who had his left side cut off?", punchline:"He's all right now!"}
+const j11 = {setup:"An invisible man married an invisible woman...", punchline:"Their kids were nothing to look at either!"}
+const j12 = {setup:"I heard there is a new shop called Moderation...", punchline:"They have everything in there"}
+const j13 = {setup:"I gave all my batteries away today...", punchline:"free of charge"}
+const j14 = {setup:"What did the clock say to time?", punchline:"Not on my watch you don't!"}
+const j15 = {setup:"The shovel was a ground breaking invention!", punchline:""}
+const j16 = {setup:"If prisoners could take their own mug shots, they'd be called cell-fies!", punchline:""}
+const j17 = {setup:"Did you hear about the cartoonist found dead in his home?", punchline:"the details are sketchy"}
+const j18 = {setup:"Did you hear the rumor going around about butter?", punchline:"nevermind, I shouldn't spread it"}
+const j19 = {setup:"I once had a job in a calendar factory..", punchline:"but I got sacked for taking a couple of days off"}
+const j20 = {setup:"I am absolutely terrified of elevators...", punchline:"I've got to start taking steps to avoid them"}
+const j21 = {setup:"Did you hear about the guy who invented the knock-knock joke?", punchline:"He won the 'no bell' prize!"}
+const j22 = {setup:"Why did the coffee file a police report?", punchline:"It got mugged!"}
+const j23 = {setup:"Did you get a haircut, Dad?", punchline:"Nope, I got them all cut!"}
+
+//jokes reference
+const jokes = [j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13, j14, j15, j16, j17, j18, j19, j20, j21, j22, j23]
+
+//event listener for button
+document.getElementById("setupButton").addEventListener("click", reset);
+
+//timeout variables
+let timeout1;
+let timeout2;
+
+//reset function
+function reset() {
+    document.getElementById("chosenJokeSetup").innerHTML = ""
+    document.getElementById("chosenJokePunchline").innerHTML = ""
+    document.getElementById("lols").src = "https://cdn3.bigcommerce.com/s-npe4l/products/555/images/1631/M-MZ-SMIL---High__27907.1498757701.380.380.jpg?c=2"
+    timeout1 = setTimeout(generateJokeSetup, 500)
+    let num = Math.floor(Math.random() * (jokes.length));  // Returns a random integer from 0 to the last in the jokes array
+    let chosenJoke = jokes[num]
+
+    //setup function
+    function generateJokeSetup() {
+        document.getElementById("chosenJokeSetup").innerHTML = chosenJoke.setup
+        timeout2 = setTimeout(generateJokePunchline, 2000)
+    }
+
+    //punchline function
+        function generateJokePunchline() {
+        document.getElementById("chosenJokePunchline").innerHTML = chosenJoke.punchline
+        timeout3 = setTimeout(smiley, 500)
+    }
+
+    //smiley function
+    function smiley() {
+        document.getElementById("lols").src = "http://www.clipartbest.com/cliparts/Kij/e45/Kije455xT.gif"
+    }  
+}
+
+</script>
+
+</body>
+</html>
